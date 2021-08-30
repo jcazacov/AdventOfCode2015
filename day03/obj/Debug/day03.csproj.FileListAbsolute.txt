@@ -1,0 +1,7 @@
+C:\Git\AdventOfCode2015\day03\bin\Debug\Input.txt
+C:\Git\AdventOfCode2015\day03\bin\Debug\day03.exe
+C:\Git\AdventOfCode2015\day03\bin\Debug\day03.pdb
+C:\Git\AdventOfCode2015\day03\obj\Debug\day03.csprojAssemblyReference.cache
+C:\Git\AdventOfCode2015\day03\obj\Debug\day03.csproj.CoreCompileInputs.cache
+C:\Git\AdventOfCode2015\day03\obj\Debug\day03.exe
+C:\Git\AdventOfCode2015\day03\obj\Debug\day03.pdb
