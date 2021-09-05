@@ -1,6 +1,0 @@
-C:\Git\AdventOfCode2015\day04\bin\Debug\day04.exe
-C:\Git\AdventOfCode2015\day04\bin\Debug\day04.pdb
-C:\Git\AdventOfCode2015\day04\obj\Debug\day04.csprojAssemblyReference.cache
-C:\Git\AdventOfCode2015\day04\obj\Debug\day04.csproj.CoreCompileInputs.cache
-C:\Git\AdventOfCode2015\day04\obj\Debug\day04.exe
-C:\Git\AdventOfCode2015\day04\obj\Debug\day04.pdb
