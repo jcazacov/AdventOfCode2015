@@ -11,6 +11,8 @@ namespace day06
         {
 
             var lights = new bool[1000,1000];
+            var lightsInt = new int[1000,1000];
+
 
             Reader reader = new Reader();
             List<Instruction> list = reader.Read("Input.txt");
@@ -21,23 +23,14 @@ namespace day06
                 {
                     for (int j = instr.X1; j < instr.X2 + 1; j++)
                     {
-                        if (instr.Order == "turn off")
-                        {
-                            lights[i , j] = false;
-                        }
-                        if (instr.Order == "turn on")
-                        {
-                            lights[i , j] = true;
-                        }
-                        if (instr.Order == "toggle")
-                        {
-                            lights[i , j] = ! lights[i , j];
-                        }
+                        instr.Apply(ref lights, i, j);
+                        instr.ApplyInt(ref lightsInt, i , j);
                     }
                 }
             }
 
             int lit = 0;
+            int power = 0;
             for (int i = 0; i < 1000; i++)
             {
                 for (int j = 0; j < 1000; j++)
@@ -46,10 +39,13 @@ namespace day06
                     {
                         lit++;
                     }
+
+                    power += lightsInt[i, j];
                 } 
             }
 
-            Console.WriteLine($"there are {lit} lights lit.");
+            Console.WriteLine($"there are {lit} lights lit");
+            Console.WriteLine($"The light has a power of {power}");
 
         }
     }
