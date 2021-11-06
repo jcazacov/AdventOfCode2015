@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace day10
 {
@@ -6,41 +7,46 @@ namespace day10
     {
         public static void Main(string[] args)
         {
-            string value = "1113222113";
-            for (int i = 0; i < 29; i++)
+            List<byte> value = new List<byte>
+            {
+                1, 1, 1, 3, 2, 2, 2, 1, 1, 3
+            };
+            for (int i = 0; i < 50; i++)
             {
                 value = lookSay(value);
-                Console.WriteLine(value);
+                Console.WriteLine(i);
             }
-            Console.WriteLine(value.Length);
+            Console.WriteLine(value.Count);
         }
 
 
 
-        static string lookSay(string seq)
+        static List<byte> lookSay(List<byte> seq)
         {
-            if (seq.Length == 1)
+            if (seq.Count == 1)
             {
-                return "1" + seq;
+                return new List<byte> { 1, seq[0]};
             }
-            
-            string newSeq = "";
-            string curDig = seq[0].ToString();
-            int counter = 1;
-            for (int i = 1; i < seq.Length; i++)
+
+            List<byte> newSeq = new List<byte>();
+            var curDig = seq[0];
+            byte counter = 1;
+            for (int i = 1; i < seq.Count; i++)
             {
-                if (seq[i].ToString() == curDig)
+                if (seq[i] == curDig)
                 {
                     counter++;
                 }
                 else
                 {
-                    newSeq = newSeq.ToString() + counter.ToString() + curDig.ToString();
-                    curDig = seq[i].ToString();
+                    newSeq.Add(counter);
+                    newSeq.Add(curDig);
+                    curDig = seq[i];
                     counter = 1;
                 }
             }
-            newSeq = newSeq + counter.ToString() + curDig.ToString();
+            newSeq.Add(counter);
+            newSeq.Add(curDig);
             return newSeq;
         }
         
