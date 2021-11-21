@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json.Linq;
 
 namespace day12
 {
@@ -31,6 +32,55 @@ namespace day12
                 match = match.NextMatch();
             }
             Console.WriteLine(sum);
+
+
+            var token = JToken.Parse(allLines);
+            int result = Jadder(token);
+            Console.WriteLine(result);
+        }
+
+        private static int Jadder(JToken token)
+        {
+            if (token.Type == JTokenType.Integer)
+            {
+                return token.Value<int>();
+            }
+
+            if (token is JProperty property)
+            {
+                return Jadder(property.Value);
+            }
+
+            if (token is JObject obj)
+            {
+                foreach (var item in obj.Children())
+                {
+                    if (item is JProperty prop)
+                    {
+                        if (prop.Value.Type == JTokenType.String)
+                        {
+                            if (prop.Value.Value<string>() == "red")
+                            {
+                                return 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!(token is JContainer))
+            {
+                return 0;
+            }
+
+            // only if token is array or object
+            int sum = 0;
+            foreach (var item in token.Children())
+            {
+                sum = sum + Jadder(item);
+            }
+
+            return sum;
         }
     }
 }
